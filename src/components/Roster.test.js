@@ -16,7 +16,7 @@ describe('Roster', () => {
         const inputElement = screen.getByPlaceholderText(/add new developer/i);
         const buttonElement = screen.getByRole('button', { name: /add to roster/i });
 
-        // TODO Exercise 1: add verification that the initial roster is being loaded
+        // TODO Exercise 2: add verification that the initial roster is being loaded
 
         expect(inputElement).toBeInTheDocument();
         expect(buttonElement).toBeInTheDocument();
