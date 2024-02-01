@@ -1,0 +1,17 @@
+.roster-list {
+    list-style-type: none;
+}
+.roster-item {
+    padding: 4px;
+    margin: 2px;
+    border: 1px solid #3498DB; /* Border color */
+    border-radius: 4px;
+    max-width: 200px;
+    background-color: #ECF0F1; /* Background color */
+    color: #2C3E50; /* Text color */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
+  .roster-item:hover {
+    background-color: #3498DB; /* Hover background color */
+    color: #ECF0F1; /* Hover text color */
+  }
