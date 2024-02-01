@@ -19,7 +19,7 @@ describe('Roster', () => {
 
         expect(inputElement).toBeInTheDocument();
         expect(buttonElement).toBeInTheDocument();
-        expect(listItems.length).toBe(developers.length);
+        expect(listItems.length).toBe(developers.length); // Verifying length only
     });
 
     test('allows users to add developers to the list', async () => {
