@@ -8,18 +8,18 @@ import { render, fireEvent,  screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Roster from './Roster';
-import {developers} from "../utils/rosterUtils";
+import expect from "expect";
 
 describe('Roster', () => {
     test('renders input, button, and initial list', async () => {
         render(<Roster />);
         const inputElement = screen.getByPlaceholderText(/add new developer/i);
         const buttonElement = screen.getByRole('button', { name: /add to roster/i });
-        const listItems = screen.queryAllByRole('listitem');
+
+        // TODO Exercise 1: add verification that the initial roster is being loaded
 
         expect(inputElement).toBeInTheDocument();
         expect(buttonElement).toBeInTheDocument();
-        expect(listItems.length).toBe(developers.length);
     });
 
     test('allows users to add developers to the list', async () => {
@@ -36,17 +36,8 @@ describe('Roster', () => {
         expect(listItemElement).toBeInTheDocument();
     });
 
-    test('does not add empty or whitespace-only items to the roster', async () => {
+    test('does not add empty or whitespace-only names to the roster', async () => {
         render(<Roster />);
-        const inputElement = screen.getByPlaceholderText(/add new developer/i);
-        const buttonElement = screen.getByRole('button', { name: /add to roster/i });
-
-        // Try to add an empty string
-        await userEvent.type(inputElement, '   ');
-        await userEvent.click(buttonElement);
-
-        // Ensure no list items were added
-        const listItems = screen.queryAllByRole('listitem');
-        expect(listItems.length).toBe(developers.length);
+        // TODO Exercise 2: Verify list does not change if user adds empty or whitespace-only names to roster
     });
 });
