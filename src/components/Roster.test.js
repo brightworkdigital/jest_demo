@@ -9,6 +9,7 @@ import userEvent from '@testing-library/user-event';
 
 import Roster from './Roster';
 import {developers} from "../utils/rosterUtils";
+import expect from "expect";
 
 describe('Roster', () => {
     test('renders input, button, and initial list', async () => {
@@ -40,13 +41,13 @@ describe('Roster', () => {
         render(<Roster />);
         const inputElement = screen.getByPlaceholderText(/add new developer/i);
         const buttonElement = screen.getByRole('button', { name: /add to roster/i });
+        const initialCount = screen.queryAllByRole('listitem').length;
 
         // Try to add an empty string
         await userEvent.type(inputElement, '   ');
         await userEvent.click(buttonElement);
 
-        // Ensure no list items were added
-        const listItems = screen.queryAllByRole('listitem');
-        expect(listItems.length).toBe(developers.length);
+        // Ensure no additional list items were added
+        expect(initialCount).toBe(screen.queryAllByRole('listitem').length);
     });
 });
