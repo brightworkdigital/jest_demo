@@ -20,6 +20,7 @@ function Roster() {
                     console.error("Unexpected result returned from getNames: ", fetchedItems);
             })
             .catch(e => {console.error("Error calling getNames: ", e)});
+
         // setItems( shuffleArray(getRoster()));
     }, []);
 
