@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./Roster.css";
-import {getRoster, shuffleArray} from "../utils/rosterUtils";
+// import {getRoster, shuffleArray} from "../utils/rosterUtils";
+import {getNames} from "../api/rosterApi";
 
 /**
  * Returns a list of developers and allows the user to add to the list.
@@ -11,9 +12,15 @@ function Roster() {
     const [newItem, setNewItem] = useState(''); // State to hold the current input value
 
     useEffect(() => {
-        // let url = 'http://localhost:8080/names';
-        // fetch(url).then(r => r.json()).then(response => setRoster(response));
-        setItems( shuffleArray(getRoster()));
+        getNames()
+            .then(fetchedItems => {
+                if (fetchedItems)
+                    setItems(fetchedItems);
+                else
+                    console.error("Unexpected result returned from getNames: ", fetchedItems);
+            })
+            .catch(e => {console.error("Error calling getNames: ", e)});
+        // setItems( shuffleArray(getRoster()));
     }, []);
 
     // Function to handle the input change
