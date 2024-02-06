@@ -12,16 +12,16 @@ function Roster() {
     const [newItem, setNewItem] = useState(''); // State to hold the current input value
 
     useEffect(() => {
-        getNames()
-            .then(fetchedItems => {
-                if (fetchedItems)
-                    setItems(fetchedItems);
-                else
-                    console.error("Unexpected result returned from getNames: ", fetchedItems);
-            })
-            .catch(e => {console.error("Error calling getNames: ", e)});
+        // Alternative approach
+        // const fetchNames = async (data) => {
+        //     const newNames = await getNames();
+        //     setItems(newNames);
+        // }
+        // fetchNames();
 
-        // setItems( shuffleArray(getRoster()));
+        getNames()
+            .then(fetchedItems => setItems(fetchedItems))
+            .catch(e => {console.error("Error calling getNames: ", e)});
     }, []);
 
     // Function to handle the input change

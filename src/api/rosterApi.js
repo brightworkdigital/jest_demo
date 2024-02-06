@@ -1,11 +1,7 @@
-const defaultOptions = {
-    mode: 'same-origin',
-    credentials: 'same-origin'
-}
 
 export function getNames() {
     const url = 'http://localhost:8080/names';
-    return fetch(url, defaultOptions)
+    return fetch(url)
     .then(response => {
         if(response.status === 200) {
             return response.json();
